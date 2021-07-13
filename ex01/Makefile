@@ -1,8 +1,8 @@
-NAME = megaphone
+NAME = phonebook
 
 CFLAGS = -Wall -Wextra -Werror
 
-SRC = ./megaphone.cpp
+SRC =	./phonebook.cpp
 
 all: $(NAME)
 
@@ -10,7 +10,7 @@ $(NAME): $(SRC)
 	clang++ -g -std=c++03 $(CFLAGS) $^ -o $@
 
 clean:
-	$(RM) ./megaphone
+	$(RM) $(NAME)
 
 re: clean all
 
