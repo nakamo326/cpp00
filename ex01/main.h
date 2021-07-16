@@ -1,5 +1,5 @@
-#ifndef PHONEBOOK_HPP
-#define PHONEBOOK_HPP
+#ifndef main_H
+#define main_H
 
 #include <iomanip>
 #include <iostream>

@@ -2,7 +2,7 @@ NAME = phonebook
 CFLAGS = -Wall -Wextra -Werror
 INCLUDE = ./
 
-SRC =	./phonebook.cpp
+SRC =	./main.cpp
 
 all: $(NAME)
 
