@@ -11,19 +11,15 @@ int main(void) {
   while (1) {
     std::cout << "INPUT COMMAND: ";
     std::getline(std::cin, cmd);
-    if (std::cin.eof()) {
-      std::cout << std::endl << "GOT EOF. BYE~" << std::endl;
+    if (std::cin.eof())
       break;
-    }
     if (cmd == "ADD") {
-      if (!pb.add()) {
-        std::cout << std::endl << "GOT EOF. BYE~" << std::endl;
+      if (!pb.add())
         break;
-      };
-    } else if (cmd == "SEARCH")
-      // pb.search();
-      continue;
-    else if (cmd == "EXIT") {
+    } else if (cmd == "SEARCH") {
+      if (!pb.search())
+        break;
+    } else if (cmd == "EXIT") {
       std::cout << "BYE~" << std::endl;
       break;
     } else {
@@ -32,5 +28,7 @@ int main(void) {
       continue;
     }
   }
+  if (std::cin.eof())
+    std::cout << std::endl << "GOT EOF. BYE~" << std::endl;
   return 0;
 }

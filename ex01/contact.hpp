@@ -11,7 +11,7 @@ class Contact {
   Contact(void);
   ~Contact();
   void set_info(int index, std::string str);
-  void get_info();
+  std::string get_info(int index);
 };
 
 #endif

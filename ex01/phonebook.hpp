@@ -16,7 +16,7 @@ class PhoneBook {
   PhoneBook();
   ~PhoneBook();
   bool add();
-  void search();
+  bool search();
 };
 
 #endif
