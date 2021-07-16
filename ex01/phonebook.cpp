@@ -1,20 +1,27 @@
 #include "phonebook.hpp"
 
-int main(int argc, char const *argv[]) {
-  commands c;
+int main(void) {
+  std::string c;
 
   while (1) {
-    switch (c) {
-    case ADD:
-      add_contact();
+    std::cout << "INPUT COMMAND: ";
+    std::cin >> c;
+    if (std::cin.eof()) {
+      std::cout << std::endl << "GOT EOF. BYE" << std::endl;
       break;
-    case SEARCH:
-      search_contact();
+    }
+    if (c == "ADD")
+      std::cout << "get add command" << std::endl;
+    // add_contact();
+    else if (c == "SEARCH")
+      std::cout << "get search command" << std::endl;
+    // search_contact();
+    else if (c == "EXIT") {
+      std::cout << "get exit command" << std::endl;
       break;
-    case EXIT:
-      exit(0);
-    default:
-      break;
+    } else {
+      std::cout << "INVALID COMMAND!" << std::endl;
+      continue;
     }
   }
   return 0;
