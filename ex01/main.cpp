@@ -1,26 +1,34 @@
-#include "main.h"
+#include <iostream>
+#include <string>
+
+#include "contact.hpp"
+#include "phonebook.hpp"
 
 int main(void) {
-  std::string c;
+  std::string cmd;
+  PhoneBook pb;
 
   while (1) {
     std::cout << "INPUT COMMAND: ";
-    std::cin >> c;
+    std::getline(std::cin, cmd);
     if (std::cin.eof()) {
-      std::cout << std::endl << "GOT EOF. BYE" << std::endl;
+      std::cout << std::endl << "GOT EOF. BYE~" << std::endl;
       break;
     }
-    if (c == "ADD")
-      std::cout << "get add command" << std::endl;
-    // add_contact();
-    else if (c == "SEARCH")
-      std::cout << "get search command" << std::endl;
-    // search_contact();
-    else if (c == "EXIT") {
-      std::cout << "get exit command" << std::endl;
+    if (cmd == "ADD") {
+      if (!pb.add()) {
+        std::cout << std::endl << "GOT EOF. BYE~" << std::endl;
+        break;
+      };
+    } else if (cmd == "SEARCH")
+      // pb.search();
+      continue;
+    else if (cmd == "EXIT") {
+      std::cout << "BYE~" << std::endl;
       break;
     } else {
       std::cout << "INVALID COMMAND!" << std::endl;
+      std::cout << "USAGE: ADD, SEARCH, EXIT" << std::endl;
       continue;
     }
   }
