@@ -6,12 +6,21 @@ SRC =	./main.cpp \
 		./contact.cpp \
 		./phonebook.cpp
 
+OBJ = $(SRC:.cpp=.o)
+
 all: $(NAME)
 
-$(NAME): $(SRC)
+$(NAME): $(OBJ)
 	clang++ -g -std=c++03 $(CFLAGS) $^ -I $(INCLUDE) -o $@
 
+%.o: %.cpp
+	clang++ -g -std=c++03 $(CFLAGS) -c $< -o $@
+
 clean:
+	$(RM) $(NAME)
+
+fclean:
+	$(RM) $(OBJ)
 	$(RM) $(NAME)
 
 re: clean all
