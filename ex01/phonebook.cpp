@@ -35,12 +35,14 @@ bool PhoneBook::search() {
   int index;
   bool f;
 
+  // if there is no contact, then return.
   if (this->index == 0) {
     std::cout << "NO CONTACT RECORDED..." << std::endl;
     return true;
   }
-  std::cout << "INDEX     |FIRST NAME|LAST NAME |NICKNAME  |" << std::endl;
 
+  // print contact's list. if field has more than 10 chars, make new string.
+  std::cout << "INDEX     |FIRST NAME|LAST NAME |NICKNAME  |" << std::endl;
   for (int i = 0; i < this->index; i++) {
     std::cout << std::left << std::setw(10) << i << "|";
     for (int j = 0; j < 3; j++) {
@@ -51,6 +53,8 @@ bool PhoneBook::search() {
     }
     std::cout << std::endl;
   }
+
+  // get index number.
   f = false;
   while (f == false) {
     std::cout << "INPUT INDEX: ";
@@ -66,6 +70,8 @@ bool PhoneBook::search() {
       f = true;
     }
   }
+
+  // print all fields per line.
   for (int i = 0; i < 5; i++) {
     std::cout << std::left << std::setw(14) << q_list[i] << " | ";
     std::cout << std::left << this->book[index].get_info(i) << std::endl;
