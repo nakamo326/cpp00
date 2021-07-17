@@ -12,36 +12,63 @@ bool PhoneBook::add() {
       "first name", "last name", "nickname", "phone number", "darkest secret"};
   std::string answer;
 
+  if (this->index == MAX_LINE) {
+    std::cout << "CONTACT IS MAX!" << std::endl;
+    return true;
+  }
   for (int i = 0; i < 5; i++) {
     std::cout << q_list[i] << ": ";
     std::getline(std::cin, answer, '\n');
-    if (std::cin.eof()) {
+    if (std::cin.eof())
       return false;
-    }
     this->book[index].set_info(i, answer);
   }
-  std::cout << "contact added successfully." << std::endl;
+  std::cout << "CONTACT IS ADDED!" << std::endl;
   this->index += 1;
   return true;
 }
 
 bool PhoneBook::search() {
+  const char q_list[][15] = {
+      "first name", "last name", "nickname", "phone number", "darkest secret"};
   std::string str;
-  std::cout << std::left << std::setw(10) << "index"
-            << "|" << std::left << std::setw(10) << "first name"
-            << "|" << std::left << std::setw(10) << "last name"
-            << "|" << std::left << std::setw(10) << "nickname"
-            << "|" << std::endl;
+  int index;
+  bool f;
+
+  if (this->index == 0) {
+    std::cout << "NO CONTACT RECORDED..." << std::endl;
+    return true;
+  }
+  std::cout << "INDEX     |FIRST NAME|LAST NAME |NICKNAME  |" << std::endl;
 
   for (int i = 0; i < this->index; i++) {
     std::cout << std::left << std::setw(10) << i << "|";
-    for (int i = 0; i < 3; i++) {
-      str = this->book[i].get_info(i);
+    for (int j = 0; j < 3; j++) {
+      str = this->book[i].get_info(j);
       if (str.length() > 10)
         str = str.substr(0, 9) + ".";
       std::cout << std::left << std::setw(10) << str << "|";
     }
+    std::cout << std::endl;
   }
-
+  f = false;
+  while (f == false) {
+    std::cout << "INPUT INDEX: ";
+    std::getline(std::cin, str);
+    if (std::cin.eof())
+      return false;
+    if (str.length() != 1 || !(str[0] >= '0' && str[0] <= '7') ||
+        std::atoi(str.c_str()) >= this->index) {
+      std::cout << "INVALID INPUT!" << std::endl
+                << "PLEASE INPUT: 0 ~ " << this->index - 1 << std::endl;
+    } else {
+      index = std::atoi(str.c_str());
+      f = true;
+    }
+  }
+  for (int i = 0; i < 5; i++) {
+    std::cout << std::left << std::setw(14) << q_list[i] << " | ";
+    std::cout << std::left << this->book[index].get_info(i) << std::endl;
+  }
   return true;
 }
