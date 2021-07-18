@@ -17,7 +17,6 @@ class PhoneBook {
 
  public:
   PhoneBook();
-  ~PhoneBook();
   bool add();
   bool search();
 };

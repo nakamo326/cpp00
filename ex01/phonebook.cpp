@@ -4,9 +4,6 @@ PhoneBook::PhoneBook() {
   this->index = 0;
 }
 
-PhoneBook::~PhoneBook() {
-}
-
 bool PhoneBook::add() {
   const char q_list[][15] = {
       "first name", "last name", "nickname", "phone number", "darkest secret"};
